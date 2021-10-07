@@ -1,0 +1,268 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /* background-color:lightgrey; */
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: border-box;
+}
+
+.main-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.game-board{
+    height: 600px;
+    width: 600px;
+    position: relative;
+    /* display: grid;
+    row-gap: 0px;
+    column-gap: 0px;
+    grid-template-columns: repeat(10, 1fr); */
+}
+.box{
+    float: left;
+    height: 60px;
+    width: 60px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: cornsilk;
+}
+
+
+#l1, #l2, #l3, #l4{
+    position: absolute;
+}
+
+#l1{
+    transform: scale(0.4);
+    left: 400px;
+    top: 342px;
+}
+#l2{
+    transform: scale(0.4);
+    left: 400px;
+    top: -102px;
+}
+#l3{
+    transform: scale(0.4) rotate(32deg);
+    left: 30px;
+    top: -109px;
+}
+#l4{
+    transform: scale(0.4) rotate(-32deg);
+    left: 36px;
+    top: 125px;
+}
+
+#s1, #s2, #s3, #s4{
+    position: absolute;
+}
+
+#s1{
+    transform: scale(0.8) rotate(-35deg);
+    left: 203px;
+    top: 55px;
+}
+#s2{
+    transform: scale(0.8) rotate(25deg);
+    left: -50px;
+    top: 199px;
+}
+
+#s3{
+    transform: scale(1.2)rotate(-77deg);
+    left: -7px;
+    top: 127px;
+} 
+
+#s4 {
+    transform: scale(0.5)rotate(94deg);
+    left: -287px;
+    top: 145px;
+}
+
+
+.piece1, .piece2{
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    transform: scale(1);
+    transition-duration: 0.4s;
+    transition-property: margin;
+}
+
+
+.container{
+    background-color: #fff;
+    box-shadow: 0 5px 35px rgba(50, 50, 50, 0.2);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    font-family: "Poppins", sans-serif;
+    height: 300px;
+    width: 250px;
+
+    align-self: center;
+}
+
+.die-wrapper{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+} 
+
+.first-player-name, .second-player-name{
+    margin: 30px 0;
+    font-weight: 800;
+}
+
+.die-number, .die-number2{
+    margin: 2px 0;
+    font-weight: 500;     
+}
+
+
+.roll-die-btn, .roll-die-btn2{
+    background-color: #e92e3d;
+     border: none;
+     outline: none;
+     color: #fff;
+     padding: 15px 0;
+     width: 150px;
+     letter-spacing: 1px ;
+     border-radius: 5px ;
+    cursor: pointer;
+}
+
+.shake{
+    animation: shake 0.5s infinite;
+}
+
+@keyframes  shake{
+      0% {
+          transform: rotate(8deg)
+      }
+      50% {
+           transform: rotate(-8deg)
+      }
+      100%{
+          transform: rotate(8deg) 
+      }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1100px) {
+    .container{
+        /* flex-basis: 50%; */
+        width: 30vw;
+        height: 200px;
+        margin: 10px 10vw;
+    }
+    .die-image, .die-image2{
+        width: 60px;
+        height: 60px;
+    }
+    .first-player-name, .second-player-name{
+        margin: 10px 0;
+    }
+}
+
+@media screen and (max-width: 699px){
+    .game-board{
+        height: 300px;
+        width: 300px;
+    }
+    .first-player-name, .second-player-name{
+        margin: 10px 0;
+    }
+    .container{
+        height: 150px;
+        margin: 10px;
+        width: 200px;
+    }
+    .die-image, .die-image2 {
+        width: 40px;
+        height: 40px
+    }
+    .roll-die-btn, .roll-die-btn2{
+        background-color: #e92e3d;
+         border: none;
+         outline: none;
+         color: #fff;
+         
+         width: 60px;
+         height: 40px;
+         padding: auto;
+         border-radius: 5px ;
+         cursor: pointer;
+    }
+    .piece1, .piece2{
+        transform: scale(0.7);
+    }
+    .box{
+        width: 30px;
+        height: 30px;
+    }
+    #s4 {
+        transform: scale(0.25)rotate(90deg);
+        left: -291px;
+        top: -5px;
+    }
+    #s2 {
+        transform: scale(0.4) rotate(25deg);
+        left: -110px;
+        top: 7px;
+    }
+    #s3 {
+        transform: scale(0.6)rotate(-77deg);
+        left: -81px;
+        top: 25px;
+    }
+    #s1 {
+        transform: scale(0.4) rotate(-35deg);
+        left: 17px;
+        top: -100px;
+    }
+    #l1 {
+        transform: scale(0.2);
+        left: 109px;
+        top: 80px;
+    }
+    #l2 {
+        transform: scale(0.2);
+        left: 110px;
+        top: -131px;
+    }
+    #l3 {
+        transform: scale(0.2) rotate(32deg);
+        left: -74px;
+        top: -203px;
+    }
+    #l4 {
+        transform: scale(0.2) rotate(-32deg);
+        left: -71px;
+        top: -91px;
+    
+    
+}
+
+
+
+
+@media screen and (max-width: 699px) and (min-width: 520px) {
+    .container{
+        flex-basis: 39%;
+        margin-left: 20vw;
+        margin-right: 20vw;
+    }
+    .boxy{
+        width: 30px;
+        height: 30px;
+    }
+}
