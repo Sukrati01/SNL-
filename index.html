@@ -4,46 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shaad's snl</title>
+    <title>traditional snl</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="main-container">
+        <!-- player1 -->
         <div class="container container1">
             <p class="first-player-name">First Player</p>
             <p class = "turn1"></p>
             <div class="die-wrapper">
-                <img src="dice-01.svg" alt="" class="die-image">
+                <img src="assets/images/dice/dice-01.svg" alt="" class="die-image">
             </div>
             <p class="die-number"></p>
             <button class="roll-die-btn">Roll</button>
         </div>
+
+        <!-- Main game board  -->
         <div class= "game-board">
             <div class="piece1">
-                <img src="greenPiece.svg" alt="">
+                <img src="assets/images/game-pieces/greenPiece.svg" alt="">
             </div>
             <div class="piece2">
-                <img src="yellowPiece.svg" alt="">
+                <img src="assets/images/game-pieces/yellowPiece.svg" alt="">
             </div>
-            <img src="ladder.png" id="l1">
-            <img src="ladder.png" id="l2">
-            <img src="ladder2.png" id="l3">
-            <img src="ladder2.png" id="l4">
-            <img src="s1.png" class="" id="s1">
-            <img src="s2.png" class="" id="s2">
-            <img src="s5.png" class="" id="s3">
-            <img src="s8.png" class="" id="s4">
+            <img src="assets/images/ladders/ladder.png" id="l1">
+            <img src="assets/images/ladders/ladder.png" id="l2">
+            <img src="assets/images/ladders/ladder2.png" id="l3">
+            <img src="assets/images/ladders/ladder2.png" id="l4">
+            <img src="assets/images/snakes/s1.png" class="" id="s1">
+            <img src="assets/images/snakes/s2.png" class="" id="s2">
+            <img src="assets/images/snakes/s5.png" class="" id="s3">
+            <img src="assets/images/snakes/s8.png" class="" id="s4">
         </div>
+
+        <!-- player2 -->
         <div class="container container2">
             <p class="second-player-name">Second Player</p>
             <p class = "turn2"></p>
             <div class="die-wrapper">
-                <img src="dice-01.svg" alt="" class="die-image2">
+                <img src="assets/images/dice/dice-01.svg" alt="" class="die-image2">
             </div>
             <p class="die-number2"></p>
             <button class="roll-die-btn2">Roll</button>
         </div>
     </div>
 </body>
-    <script src='script.js'></script>
+    <script type="module"  src='js/main.js'></script>
 </html>

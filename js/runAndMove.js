@@ -1,34 +1,10 @@
-const INITIAL_PIECE_OFFSET = 8;
-let turn = Math.floor(Math.random()*2); // turn 0 is for player 1
+import {INITIAL_PIECE_OFFSET} from "./constants.js"
+import {dieImages, snakesAndLadders} from "./gameConfig.js"
+let turn = undefined;
 
-const snakesAndLadders = [ // [from, to]
-    [80, 21],
-    [62, 4],
-    [97, 39],
-    [87, 14],
-    [10, 30],
-    [16, 43],
-    [58, 85],
-    [71, 91],
-];
+let startCentreX = undefined;
+let centreOffSet = undefined;
 
-const addBoxes = () => {
-  const gameBoard = document.querySelector(".game-board");
-
-  let direction = 0;// left to right
-  for (let i = 0; i < 100; i++) {
-    const box = document.createElement("div");
-    if (i % 2 === 0 && direction === 0) box.style.backgroundColor = "#9788b3"; // make it as constants
-    if (i % 2 !== 0 && direction === 1) box.style.backgroundColor = "#9788b3";
-
-    box.classList.add("box");
-    gameBoard.append(box);
-
-    if ((i + 1) % 10 == 0) direction = 1 - direction;
-  }
-};
-
-addBoxes();
 
 const getCenter = (id) => {
     const targetElement = document.getElementById(id);
@@ -37,29 +13,6 @@ const getCenter = (id) => {
   
     return [centerX, centerY];
 };
-
-
-const numberAllBoxes = () => {
-  let boxes = document.querySelectorAll(".box");
-  boxes.forEach((box, i) => {
-    if (
-      String(i).length == 1 ||
-      (String(i).length == 2 && Number(String(i)[0]) % 2 == 0)
-    )
-      box.innerHTML = 100 - i;
-    else
-      box.innerHTML = Number(`${9 - Number(String(i)[0])}${String(i)[1]}`) + 1;
-
-    box.setAttribute("id", box.innerHTML);
-    // box.innerHTML = box.innerHTML + ' ' + getCenter(box.innerHTML)[0] + ',' + getCenter(box.innerHTML)[1];
-  });
-};
-
-numberAllBoxes();
-for(let i = 100; i >=1; i--)
-    console.log(getCenter(i));
-
-let [startCentreX, centreOffSet] = [undefined, undefined];
 
 const initPositionGamePieces = () => {
   const [x, y] = getCenter("1");
@@ -71,22 +24,16 @@ const initPositionGamePieces = () => {
   piece2.style.left = -x  - INITIAL_PIECE_OFFSET +"px";
   piece2.style.top = y -INITIAL_PIECE_OFFSET + "px";
 
-  [startCentreX, centreOffSet] = [x, 2 * x];
+  [startCentreX, centreOffSet] =  [x, 2 * x];
 };
-initPositionGamePieces();
 
-const dieImages = [
-  "dice-01.svg",
-  "dice-02.svg",
-  "dice-03.svg",
-  "dice-04.svg",
-  "dice-05.svg",
-  "dice-06.svg",
-];
 
-const dieImg = document.querySelector(".die-image");
-const dieImg2 = document.querySelector(".die-image2");
-
+const getCurrentPiceOffset = ()=>{
+    if(turn == 0)
+        return 0;
+    
+    return INITIAL_PIECE_OFFSET;
+}
 
 const getCurrentActivePiece = ()=>{
     let currPiece = undefined;
@@ -96,14 +43,7 @@ const getCurrentActivePiece = ()=>{
         currPiece = document.querySelector(".piece2");
     return currPiece;
 }
-const getCurrentInActivePiece = ()=>{
-    let currPiece = undefined;
-    if(turn === 1)
-        currPiece = document.querySelector(".piece1");
-    else 
-        currPiece = document.querySelector(".piece2");
-    return currPiece;
-}
+
 
 const getPositionCurrActivePiece = ()=>{
     const currPiece = getCurrentActivePiece()
@@ -127,19 +67,14 @@ const getBlockIDAtCurrActivePiece = ()=>{
         return 100 - (rowNum) * 10 - (10 - colNum - 1); 
 }
 
-const getCurrentPiceOffset = ()=>{
-    if(turn == 0)
-        return 0;
-    
-    return INITIAL_PIECE_OFFSET;
-}
+
 
 
 const roll = (dieImg) => {
     return new Promise(async (resolve, reject)=>{
         dieImg.classList.add("shake");
         let dieValue = Math.floor(Math.random() * 6) + 1;
-        dieImg.setAttribute("src", dieImages[dieValue - 1]);
+        dieImg.setAttribute("src", `assets/images/dice/${dieImages[dieValue - 1]}`);
         
         await new Promise((resolve)=>
             setTimeout(() => {
@@ -160,7 +95,6 @@ const getDirection = ()=>{
     const currPieceOffSet = getCurrentPiceOffset()
     x += currPieceOffSet;
     y += INITIAL_PIECE_OFFSET;
-    console.log(x, y)
 
     const maxCoord = startCentreX + 9*centreOffSet;
 
@@ -208,21 +142,21 @@ const getCurrActiveInActiveTurn = ()=>{
     return [currActiveTurn, currInActiveTurn];
 }
 
-const initialTurn = ()=>{
+const initialTurn = (mainTurn)=>{
+    turn = mainTurn;
     const [currActiveTurn, currInActiveTurn] = getCurrActiveInActiveTurn();
     currActiveTurn.innerHTML = "Your turn";
     currActiveTurn.style.color = 'red';
     currInActiveTurn.style.color = 'red';
 }
 
-initialTurn();
 const changeTurn = ()=>{
     const [currActiveTurn, currInActiveTurn] = getCurrActiveInActiveTurn();
     currActiveTurn.innerHTML = "";
     currInActiveTurn.innerHTML = 'Your turn';
     turn = 1 - turn;
 
-}
+} 
 const movePiece = (direction)=>{
     return new Promise(async(resolve, reject) => {
         const currPiece = getCurrentActivePiece()
@@ -282,7 +216,8 @@ const rollAction = (dieValue)=>{
 }
 
 let stopRollCallback = false;
-const addRollClickEventListener = (targetBtnClass, dieImg)=>{
+const addRollClickEventListener = (targetBtnClass, dieImg, mainTurn)=>{
+    turn = mainTurn;
     const targetBtn = document.querySelector(targetBtnClass);
     targetBtn.addEventListener("click", async (e) => {
         if(!stopRollCallback){
@@ -298,10 +233,11 @@ const addRollClickEventListener = (targetBtnClass, dieImg)=>{
             
         }
     });
+    return turn;
 }
 
-addRollClickEventListener(".roll-die-btn", dieImg);
-addRollClickEventListener(".roll-die-btn2", dieImg2);
 
+
+export {getCenter, initPositionGamePieces, addRollClickEventListener, initialTurn};
 
 

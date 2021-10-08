@@ -20,10 +20,6 @@ body{
     height: 600px;
     width: 600px;
     position: relative;
-    /* display: grid;
-    row-gap: 0px;
-    column-gap: 0px;
-    grid-template-columns: repeat(10, 1fr); */
 }
 .box{
     float: left;
@@ -31,7 +27,7 @@ body{
     width: 60px;
     box-sizing: border-box;
     text-align: center;
-    background-color: cornsilk;
+    background-color: rgb(255, 248, 220);
 }
 
 
@@ -247,12 +243,9 @@ body{
     #l4 {
         transform: scale(0.2) rotate(-32deg);
         left: -71px;
-        top: -91px;
-    
-    
+        top: -91px;  
+    }
 }
-
-
 
 
 @media screen and (max-width: 699px) and (min-width: 520px) {
