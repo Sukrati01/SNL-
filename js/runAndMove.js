@@ -1,5 +1,6 @@
-import {INITIAL_PIECE_OFFSET} from "./constants.js"
+import {DARK_BOX_COLOR, INITIAL_PIECE_OFFSET} from "./constants.js"
 import {dieImages, snakesAndLadders} from "./gameConfig.js"
+import {gamePageToWinningPage} from "./togglePages.js"
 let turn = undefined;
 
 let startCentreX = undefined;
@@ -18,11 +19,11 @@ const initPositionGamePieces = () => {
   const [x, y] = getCenter("1");
   const piece1 = document.querySelector(".piece1");
   const piece2 = document.querySelector(".piece2");
-  piece1.style.left = -x + "px";
-  piece1.style.top = y -INITIAL_PIECE_OFFSET + "px";
+  piece1.style.left = `${-x + 6*60}px`;
+  piece1.style.top = `${y-INITIAL_PIECE_OFFSET - 9*60}px`;
 
-  piece2.style.left = -x  - INITIAL_PIECE_OFFSET +"px";
-  piece2.style.top = y -INITIAL_PIECE_OFFSET + "px";
+  piece2.style.left = `${-x -INITIAL_PIECE_OFFSET + 6*60}px`;
+  piece2.style.top = `${y -INITIAL_PIECE_OFFSET - 9*60}px`;
 
   [startCentreX, centreOffSet] =  [x, 2 * x];
 };
@@ -74,6 +75,7 @@ const roll = (dieImg) => {
     return new Promise(async (resolve, reject)=>{
         dieImg.classList.add("shake");
         let dieValue = Math.floor(Math.random() * 6) + 1;
+        new Audio('../assets/sounds/diceRoll.mp3').play();
         dieImg.setAttribute("src", `assets/images/dice/${dieImages[dieValue - 1]}`);
         
         await new Promise((resolve)=>
@@ -146,8 +148,8 @@ const initialTurn = (mainTurn)=>{
     turn = mainTurn;
     const [currActiveTurn, currInActiveTurn] = getCurrActiveInActiveTurn();
     currActiveTurn.innerHTML = "Your turn";
-    currActiveTurn.style.color = 'red';
-    currInActiveTurn.style.color = 'red';
+    currActiveTurn.style.color = DARK_BOX_COLOR;
+    currInActiveTurn.style.color = DARK_BOX_COLOR;
 }
 
 const changeTurn = ()=>{
@@ -160,13 +162,13 @@ const changeTurn = ()=>{
 const movePiece = (direction)=>{
     return new Promise(async(resolve, reject) => {
         const currPiece = getCurrentActivePiece()
-        
+        new Audio('../assets/sounds/move.mp3').play()
         if(direction === 'up')
-            currPiece.style.top  = parseInt(currPiece.style.top)  - centreOffSet + 'px';
+            currPiece.style.top  = `${parseInt(currPiece.style.top)  - centreOffSet}px`;
         else if(direction === 'right')
-            currPiece.style.left = parseInt(currPiece.style.left) + centreOffSet + 'px';
+            currPiece.style.left = `${parseInt(currPiece.style.left) + centreOffSet}px`;
         else if(direction === 'left')
-            currPiece.style.left = parseInt(currPiece.style.left) - centreOffSet + 'px';
+            currPiece.style.left = `${parseInt(currPiece.style.left) - centreOffSet}px`;
         
         await new Promise(resolve => setTimeout(resolve, 400));
         resolve()
@@ -178,11 +180,12 @@ const checkLaddersAndSnakes = ()=>{
         for(let i = 0; i< snakesAndLadders.length; i++){
             const snl = snakesAndLadders[i];
             if(Number(getBlockIDAtCurrActivePiece()) === snl[0]){
+                new Audio('../assets/sounds/move.mp3').play()
                 const currPiece = getCurrentActivePiece();
                 let [newX, newY] = getCenter(snl[1]);
                 newY -= INITIAL_PIECE_OFFSET;
-                currPiece.style.top = newY + 'px';
-                currPiece.style.left = newX - getCurrentPiceOffset() + 'px';
+                currPiece.style.top = `${newY}px`;
+                currPiece.style.left = `${newX - getCurrentPiceOffset()}px`;
                 await new Promise(resolve => setTimeout(resolve, 400));
                 break;
             }
@@ -204,10 +207,16 @@ const rollAction = (dieValue)=>{
             await checkLaddersAndSnakes();
         }
         if(getBlockIDAtCurrActivePiece() === 100){
+            await new Audio('../assets/sounds/win.mp3').play()
+            const winnerDeclarationText = document.querySelector('.winner-declaration-text');
+            let winnerUserName = undefined;
             if(turn === 0)
-                alert('player-one has won the match')
+                winnerUserName = document.querySelector('.first-player-name').innerHTML;
             else 
-                alert('player two has won the match');
+                winnerUserName = document.querySelector('.second-player-name').innerHTML;
+            
+            winnerDeclarationText.innerHTML = `${winnerUserName} won!`;
+            gamePageToWinningPage(winnerUserName);
         }
         changeTurn();
         resolve();

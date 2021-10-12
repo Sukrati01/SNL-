@@ -7,8 +7,12 @@ body{
     /* background-color:lightgrey; */
     font-family: Arial, Helvetica, sans-serif;
     box-shadow: border-box;
+    background-image: url('../assets/images/front-page/background.png');
 }
 
+.game-page{
+    display: none;
+}
 .main-container{
     display: flex;
     flex-wrap: wrap;
@@ -117,6 +121,7 @@ body{
 .first-player-name, .second-player-name{
     margin: 30px 0;
     font-weight: 800;
+    font-size: 1.5rem;
 }
 
 .die-number, .die-number2{
@@ -126,7 +131,7 @@ body{
 
 
 .roll-die-btn, .roll-die-btn2{
-    background-color: #e92e3d;
+    background-color: #18BC9C;
      border: none;
      outline: none;
      color: #fff;
@@ -152,6 +157,8 @@ body{
           transform: rotate(8deg) 
       }
 }
+
+
 
 @media screen and (min-width: 700px) and (max-width: 1100px) {
     .container{
@@ -191,7 +198,7 @@ body{
          border: none;
          outline: none;
          color: #fff;
-         
+         font-weight: 800;
          width: 60px;
          height: 40px;
          padding: auto;
@@ -244,6 +251,9 @@ body{
         transform: scale(0.2) rotate(-32deg);
         left: -71px;
         top: -91px;  
+    }
+    .first-player-name, .second-player-name{
+        font-size: 1rem;
     }
 }
 

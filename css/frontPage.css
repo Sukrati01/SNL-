@@ -1,0 +1,205 @@
+.front-page{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 1;
+    min-height: calc(100vh - 64px);
+    color: rgba(0, 0, 0, 0.87);
+    font-family: 'Lato', Arial, sans-serif;
+}
+
+.front-page button{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    overflow: visible;
+}
+
+.nav-bar{
+    height: 64px;
+    /* flex: 0 0 100%; */
+    background-color: white;
+}
+
+.game-thumbnail{
+    display: flex;
+    width: 180px;
+    /* width: 33%; */
+    /* overflow: hidden; */
+    margin-right: 16px;
+    flex-direction: column-reverse;
+    border-top-left-radius: 9px;
+    padding-top: 15px;
+}
+.game-thumbnail img{
+    /* width: 100%; */
+    vertical-align: middle;
+    border: 0;
+
+}
+
+.game-pad{
+    display: flex;
+    flex-grow: 2;
+    /* align-self: center; */
+    justify-content: center;
+    margin-top: 90px;
+   
+    
+}
+
+.box-shadow-0{
+    box-shadow: rgb(0 27 56 / 8%) 0px 4px 16px;
+}
+
+.pad-box{
+    background-color: white;
+    height: 350px;
+    width: 600px;
+    margin-bottom: 20px;
+    padding: 24px;
+}
+
+.game-title{
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.game-title h1{
+    margin: 0;
+    font-weight: 900;
+    font-size: 45px;
+    line-height: 64px;
+}
+
+.game-entrance{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game-actions{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.user-name-input, .start-btn{
+    background: #18BC9C;
+    color: #fff;
+    margin-top: 16px;
+    border-radius: 5px;
+    border: 0px solid transparent;
+    font-weight: bold;
+    transition: background 300ms;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33333;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align:middle;
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    text-transform: none;
+}
+
+.start-btn{
+    margin-bottom: 0;
+}
+
+
+.leader-board{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(239, 239, 239);
+    width: 360px;
+    
+}
+
+.tabs{
+    display: flex;
+    background: #f8f9fa;
+    
+}
+
+.tabs li{
+    list-style-type: none;
+    padding: 0;
+    color: #18BC9C;
+}
+
+
+
+.tab-btn{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    border: none;
+    background: white;
+    vertical-align: baseline;
+    text-transform: none;
+}
+
+.icon-container{
+    width: 100%;
+    margin-bottom: 6px;
+}
+.icon-title{
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.inactive-btn{
+    /* background-color: #ced4da; */
+    background-color: rgb(239, 239, 239);
+    color: #18BC9C;
+}
+
+.tab-pane{
+    padding: 8px;
+}
+
+.rank-table{
+    font-size: 18px;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: transparent;
+}
+
+
+.funky{
+    font-family: 'Luckiest Guy', "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal !important;
+    letter-spacing: 1px;
+}
+
+
+.rank{
+    padding: 3px 5px;
+    width: 15px;
+}
+
+.username{
+    font: 18px Helvetica, Arial;
+    height: 24px;
+    padding: 3px 5px;
+    padding-bottom: 6px;
+}
+.score{
+    float: right;
+}
+
+
+@media screen and (max-width: 600px) {
+    .pad-box{
+        width: auto;
+        height: 500px;
+    }
+    .nav-bar{
+        height: 32px;
+    }
+}

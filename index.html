@@ -5,48 +5,174 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>traditional snl</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- game page style sheet -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- front page stylesheets -->
+    <link rel="stylesheet" href="./css/frontPage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    
+    <!-- end page stylesheet  -->
+    <link rel="stylesheet" href="./css/endPage.css">
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/1fa2777cde.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="main-container">
-        <!-- player1 -->
-        <div class="container container1">
-            <p class="first-player-name">First Player</p>
-            <p class = "turn1"></p>
-            <div class="die-wrapper">
-                <img src="assets/images/dice/dice-01.svg" alt="" class="die-image">
-            </div>
-            <p class="die-number"></p>
-            <button class="roll-die-btn">Roll</button>
-        </div>
 
-        <!-- Main game board  -->
-        <div class= "game-board">
-            <div class="piece1">
-                <img src="assets/images/game-pieces/greenPiece.svg" alt="">
-            </div>
-            <div class="piece2">
-                <img src="assets/images/game-pieces/yellowPiece.svg" alt="">
-            </div>
-            <img src="assets/images/ladders/ladder.png" id="l1">
-            <img src="assets/images/ladders/ladder.png" id="l2">
-            <img src="assets/images/ladders/ladder2.png" id="l3">
-            <img src="assets/images/ladders/ladder2.png" id="l4">
-            <img src="assets/images/snakes/s1.png" class="" id="s1">
-            <img src="assets/images/snakes/s2.png" class="" id="s2">
-            <img src="assets/images/snakes/s5.png" class="" id="s3">
-            <img src="assets/images/snakes/s8.png" class="" id="s4">
-        </div>
+    <!-- LANDING PAGE  -->
+    <div class="start-page">
+        <div class="nav-bar box-shadow-0">
 
-        <!-- player2 -->
-        <div class="container container2">
-            <p class="second-player-name">Second Player</p>
-            <p class = "turn2"></p>
-            <div class="die-wrapper">
-                <img src="assets/images/dice/dice-01.svg" alt="" class="die-image2">
+        </div>
+        <div class="front-page">
+        
+            <div class="game-pad">
+                <div class="pad-box box-shadow-0">
+                    <div class="game-title">
+                        <h1>Snakes & ladders</h1>
+                    </div>
+                    <div class="game-entrance">
+                        <div class="game-thumbnail">
+                            <img src="../assets/images/front-page/snake-ladder-logo.png" alt="">
+                        </div>
+                        <div class="game-actions">
+                            <input type="text" placeholder="Enter Player 1 name"  class="user-name-input">
+                            <input type="text" placeholder="Enter Player 2 name"  class="user-name-input">
+                            <button class="start-btn">Start!</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="die-number2"></p>
-            <button class="roll-die-btn2">Roll</button>
+            <div class="leader-board box-shadow-0">
+                <ul class="tabs" >
+                    <li >
+                        <button class="tab-btn active-btn">
+                            <div class="icon-container">
+                                <i class="fa fa-trophy fa-2x" ></i>
+                            </div>
+                            <span class="icon-title" >Tournament</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="tab-btn inactive-btn">
+                            <div class="icon-container">
+                                <i class="fa fa-hashtag fa-2x" ></i>
+                            </div>
+                            <span class="icon-title">
+                                RANkA
+                            </span>
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-pane">
+                    <table class="rank-table">
+                        <tbody class = "rank-table-body">
+                            <!-- <tr class="rank-table-row">
+                                <td class="rank funky">1.</td>
+                                <td class="username" >
+                                    Lakehouse
+                                </td>
+                                <td class="score" >2000</td>
+                            </tr>
+                            <tr class="rank-table-row">
+                                <td class="rank funky">2.</td>
+                                <td class="username" >
+                                    Angel
+                                </td>
+                                <td class="score" >1000</td>
+                            </tr>
+                            <tr class="rank-table-row">
+                                <td class="rank funky">3.</td>
+                                <td class="username" >
+                                    Guest1234
+                                </td>
+                                <td class="score" >999</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- GAME PAGE -->
+    <div class="game-page">
+        <div class="nav-bar box-shadow-0">
+
+        </div>
+        <div class="main-container">
+            <!-- player1 -->
+            <div class="container container1">
+                <p class="first-player-name">First Player</p>
+                <p class = "turn1"></p>
+                <div class="die-wrapper">
+                    <img src="assets/images/dice/dice-01.svg" alt="" class="die-image">
+                </div>
+                <p class="die-number"></p>
+                <button class="roll-die-btn">Roll</button>
+            </div>
+    
+            <!-- Main game board  -->
+            <div class= "game-board">
+                <div class="piece1">
+                    <img src="assets/images/game-pieces/greenPiece.svg" alt="">
+                </div>
+                <div class="piece2">
+                    <img src="assets/images/game-pieces/yellowPiece.svg" alt="">
+                </div>
+                <img src="assets/images/ladders/ladder.png" id="l1">
+                <img src="assets/images/ladders/ladder.png" id="l2">
+                <img src="assets/images/ladders/ladder2.png" id="l3">
+                <img src="assets/images/ladders/ladder2.png" id="l4">
+                <img src="assets/images/snakes/s1.png" class="" id="s1">
+                <img src="assets/images/snakes/s2.png" class="" id="s2">
+                <img src="assets/images/snakes/s5.png" class="" id="s3">
+                <img src="assets/images/snakes/s8.png" class="" id="s4">
+            </div>
+    
+            <!-- player2 -->
+            <div class="container container2">
+                <p class="second-player-name">Second Player</p>
+                <p class = "turn2"></p>
+                <div class="die-wrapper">
+                    <img src="assets/images/dice/dice-01.svg" alt="" class="die-image2">
+                </div>
+                <p class="die-number2"></p>
+                <button class="roll-die-btn2">Roll</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- GAME OVER PAGE -->
+    <div class="end-page">
+        <!-- <div class="nav-bar box-shadow-0">
+
+        </div> -->
+        <div class="end-content-container box-shadow-0">
+            <div class="game-over-image">
+                <img src="assets/images/end-page/game-over-glitch.png" alt="">
+            </div>
+            <div class="winner-and-action">
+                <div class="winner-declaration">
+                    <i class="fa fa-trophy fa-4x winner-declaration-icon" ></i>
+                    <p class="winner-declaration-text">Shaad Won!</p>
+                </div>
+                <div class="action">
+                    <button class="action-btn">
+                        <i class="fa fa-play-circle fa-2x action-btn-icon" ></i>
+                        <p class="action-text">Plan Again!</p>
+                    </button>
+                    <button class="action-btn" >
+                        <i class="fa fa-home fa-2x action-btn-icon " ></i>
+                        <p class="action-text" >Home</p>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </body>

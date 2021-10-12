@@ -1,5 +1,6 @@
 import {LIGHT_BOX_COLOR, DARK_BOX_COLOR} from './constants.js'
 import { getCenter } from './runAndMove.js';
+
 export const addBoxes = () => {
     const gameBoard = document.querySelector(".game-board");
 

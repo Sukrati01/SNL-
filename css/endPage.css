@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.end-page{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 10vw;
+    height: 80vh;
+} 
+
+.end-content-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    height: 80%;
+    background-color: #fff;
+}
+
+.game-over-image{
+    display: flex;
+    justify-content: center;
+    height: 300px;
+    width: 300px;
+    /* border: 2px solid red; */
+}
+
+.game-over-image img{
+    width: 100%;
+    height: 100%;
+}
+
+.winner-and-action{
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    width: 35vw;
+    /* border: 2px solid black; */
+}
+
+
+.winner-declaration{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    /* margin-bottom: 30px; */
+    width: 80%;
+}
+.winner-declaration-text{
+    font-size: 4rem;
+    font-weight: 900;
+}
+
+.action{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 50px;
+}
+
+.action-btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;
+    margin: auto 10px;
+    padding: 10px;
+    background-color: #18BC9C;
+    border: 0px solid white;
+    border-radius: 12px;
+}
+
+.action-text{
+    margin-left: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.action-btn-icon{
+    color: #3465eb;
+}
+
+@media screen and (max-width: 600px) {
+    .end-content-container{
+        width: 80vw;
+    }
+    .end-page{
+        padding: 10px;
+    }
+    .winner-declaration{
+        width: 100%;
+    }
+    .winner-declaration-text{
+        font-size: 20px;
+        margin: 5px;
+    }
+    .action-text{
+        display: none;
+    }
+    .game-over-image{
+        width: 200px;
+        height: 200px;
+    }
+    .action{
+        width: 100%;
+    }
+    .action-btn{
+        margin: 0 2px;
+       
+    }
+}
